@@ -9,7 +9,7 @@ require (
 	github.com/NYTimes/gziphandler v1.1.1
 	github.com/PuerkitoBio/goquery v1.5.0
 	github.com/emersion/go-imap v1.0.4
-	github.com/emersion/go-message v0.12.0
+	github.com/emersion/go-message v0.18.1
 	github.com/go-sql-driver/mysql v1.8.1
 	github.com/gophish/gomail v0.0.0-20200818021916-1f6d0dfd512e
 	github.com/gorilla/context v1.1.1
@@ -37,7 +37,6 @@ require (
 	github.com/andybalholm/cascadia v1.0.0 // indirect
 	github.com/denisenkom/go-mssqldb v0.0.0-20191124224453-732737034ffd // indirect
 	github.com/emersion/go-sasl v0.0.0-20191210011802-430746ea8b9b // indirect
-	github.com/emersion/go-textwrapper v0.0.0-20160606182133-d0e65e56babe // indirect
 	github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5 // indirect
 	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/gofrs/uuid v4.4.0+incompatible // indirect
