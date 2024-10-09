@@ -12,7 +12,7 @@ require (
 	github.com/gophish/gomail v0.0.0-20200818021916-1f6d0dfd512e
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/csrf v1.6.2
-	github.com/gorilla/handlers v1.4.2
+	github.com/gorilla/handlers v1.5.2
 	github.com/gorilla/mux v1.7.3
 	github.com/gorilla/securecookie v1.1.1
 	github.com/gorilla/sessions v1.2.0
@@ -26,6 +26,9 @@ require (
 	golang.org/x/time v0.0.0-20200416051211-89c76fbcd5d1
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 	gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405
+)
+
+require (
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751 // indirect
 	github.com/alecthomas/units v0.0.0-20190924025748-f65c72e2690d // indirect
 	github.com/andybalholm/cascadia v1.0.0 // indirect
@@ -33,6 +36,7 @@ require (
 	github.com/emersion/go-sasl v0.0.0-20191210011802-430746ea8b9b // indirect
 	github.com/emersion/go-textwrapper v0.0.0-20160606182133-d0e65e56babe // indirect
 	github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5 // indirect
+	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/gofrs/uuid v4.4.0+incompatible // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.0.1 // indirect
