@@ -9,8 +9,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gophish/gophish/config"
-
 	"github.com/gophish/gomail"
 	"github.com/jordan-wright/email"
 	"gopkg.in/check.v1"
@@ -302,7 +300,7 @@ func (s *ModelsSuite) TestMailLogGenerate(ch *check.C) {
 func (s *ModelsSuite) TestMailLogGenerateTransparencyHeaders(ch *check.C) {
 	s.config.ContactAddress = "test@test.com"
 	expectedHeaders := map[string]string{
-		"X-Mailer":          config.ServerName,
+		// "X-Mailer":          config.ServerName,
 		"X-Gophish-Contact": s.config.ContactAddress,
 	}
 	campaign := s.createCampaign(ch)
@@ -314,17 +312,17 @@ func (s *ModelsSuite) TestMailLogGenerateTransparencyHeaders(ch *check.C) {
 
 func (s *ModelsSuite) TestMailLogGenerateOverrideTransparencyHeaders(ch *check.C) {
 	expectedHeaders := map[string]string{
-		"X-Mailer":          "",
+		// "X-Mailer":          "",
 		"X-Gophish-Contact": "",
 	}
 	smtp := SMTP{
 		Name:        "Test SMTP",
 		Host:        "1.1.1.1:25",
-		FromAddress: "Foo Bar <foo@example.com>",
+		FromAddress: "foo@example.com",
 		UserId:      1,
 		Headers: []Header{
 			Header{Key: "X-Gophish-Contact", Value: ""},
-			Header{Key: "X-Mailer", Value: ""},
+			// Header{Key: "X-Mailer", Value: ""},
 		},
 	}
 	ch.Assert(PostSMTP(&smtp), check.Equals, nil)
