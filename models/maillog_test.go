@@ -15,9 +15,12 @@ import (
 )
 
 func (s *ModelsSuite) emailFromFirstMailLog(campaign Campaign, ch *check.C) *email.Email {
+	err := campaign.FetchResults()
+	ch.Assert(err, check.Equals, nil)
+
 	result := campaign.Results[0]
 	m := &MailLog{}
-	err := db.Where("r_id=? AND campaign_id=?", result.RId, campaign.Id).
+	err = db.Where("r_id=? AND campaign_id=?", result.RId, campaign.Id).
 		Find(m).Error
 	ch.Assert(err, check.Equals, nil)
 
@@ -63,9 +66,13 @@ func (s *ModelsSuite) TestGetQueuedMailLogs(ch *check.C) {
 
 func (s *ModelsSuite) TestMailLogBackoff(ch *check.C) {
 	campaign := s.createCampaign(ch)
+
+	err := campaign.FetchResults()
+	ch.Assert(err, check.Equals, nil)
+
 	result := campaign.Results[0]
 	m := &MailLog{}
-	err := db.Where("r_id=? AND campaign_id=?", result.RId, campaign.Id).
+	err = db.Where("r_id=? AND campaign_id=?", result.RId, campaign.Id).
 		Find(m).Error
 	ch.Assert(err, check.Equals, nil)
 	ch.Assert(m.SendAttempt, check.Equals, 0)
@@ -95,6 +102,9 @@ func (s *ModelsSuite) TestMailLogBackoff(ch *check.C) {
 	campaign, err = GetCampaign(campaign.Id, int64(1))
 	ch.Assert(err, check.Equals, nil)
 
+	err = campaign.FetchEvents()
+	ch.Assert(err, check.Equals, nil)
+
 	// We expect MaxSendAttempts + the initial campaign created event
 	ch.Assert(len(campaign.Events), check.Equals, MaxSendAttempts+1)
 
@@ -105,9 +115,13 @@ func (s *ModelsSuite) TestMailLogBackoff(ch *check.C) {
 
 func (s *ModelsSuite) TestMailLogError(ch *check.C) {
 	campaign := s.createCampaign(ch)
+
+	err := campaign.FetchResults()
+	ch.Assert(err, check.Equals, nil)
+
 	result := campaign.Results[0]
 	m := &MailLog{}
-	err := db.Where("r_id=? AND campaign_id=?", result.RId, campaign.Id).
+	err = db.Where("r_id=? AND campaign_id=?", result.RId, campaign.Id).
 		Find(m).Error
 	ch.Assert(err, check.Equals, nil)
 	ch.Assert(m.RId, check.Equals, result.RId)
@@ -128,6 +142,9 @@ func (s *ModelsSuite) TestMailLogError(ch *check.C) {
 	campaign, err = GetCampaign(campaign.Id, int64(1))
 	ch.Assert(err, check.Equals, nil)
 
+	err = campaign.FetchEvents()
+	ch.Assert(err, check.Equals, nil)
+
 	expectedEventLength := 2
 	ch.Assert(len(campaign.Events), check.Equals, expectedEventLength)
 
@@ -146,14 +163,22 @@ func (s *ModelsSuite) TestMailLogError(ch *check.C) {
 
 	ms, err := GetMailLogsByCampaign(campaign.Id)
 	ch.Assert(err, check.Equals, nil)
+
+	err = campaign.FetchResults()
+	ch.Assert(err, check.Equals, nil)
+
 	ch.Assert(len(ms), check.Equals, len(campaign.Results)-1)
 }
 
 func (s *ModelsSuite) TestMailLogSuccess(ch *check.C) {
 	campaign := s.createCampaign(ch)
+
+	err := campaign.FetchResults()
+	ch.Assert(err, check.Equals, nil)
+
 	result := campaign.Results[0]
 	m := &MailLog{}
-	err := db.Where("r_id=? AND campaign_id=?", result.RId, campaign.Id).
+	err = db.Where("r_id=? AND campaign_id=?", result.RId, campaign.Id).
 		Find(m).Error
 	ch.Assert(err, check.Equals, nil)
 	ch.Assert(m.RId, check.Equals, result.RId)
@@ -168,6 +193,9 @@ func (s *ModelsSuite) TestMailLogSuccess(ch *check.C) {
 
 	// Get our updated campaign and check for the added event
 	campaign, err = GetCampaign(campaign.Id, int64(1))
+	ch.Assert(err, check.Equals, nil)
+
+	err = campaign.FetchEvents()
 	ch.Assert(err, check.Equals, nil)
 
 	expectedEventLength := 2
@@ -186,6 +214,10 @@ func (s *ModelsSuite) TestMailLogSuccess(ch *check.C) {
 
 	ms, err := GetMailLogsByCampaign(campaign.Id)
 	ch.Assert(err, check.Equals, nil)
+
+	err = campaign.FetchResults()
+	ch.Assert(err, check.Equals, nil)
+
 	ch.Assert(len(ms), check.Equals, len(campaign.Results)-1)
 }
 
@@ -247,6 +279,10 @@ func (s *ModelsSuite) TestMailLogGetSmtpFrom(ch *check.C) {
 
 func (s *ModelsSuite) TestMailLogGenerate(ch *check.C) {
 	campaign := s.createCampaign(ch)
+
+	err := campaign.FetchResults()
+	ch.Assert(err, check.Equals, nil)
+
 	result := campaign.Results[0]
 	expected := &email.Email{
 		From:    "test@test.com", // Default smtp.FromAddress
