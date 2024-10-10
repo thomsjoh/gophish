@@ -8,12 +8,12 @@ require (
 	bitbucket.org/liamstask/goose v0.0.0-20150115234039-8488cc47d90c
 	github.com/NYTimes/gziphandler v1.1.1
 	github.com/PuerkitoBio/goquery v1.5.0
-	github.com/emersion/go-imap v1.0.4
-	github.com/emersion/go-message v0.12.0
+	github.com/emersion/go-imap v1.2.1
+	github.com/emersion/go-message v0.18.1
 	github.com/go-sql-driver/mysql v1.8.1
 	github.com/gophish/gomail v0.0.0-20200818021916-1f6d0dfd512e
 	github.com/gorilla/context v1.1.1
-	github.com/gorilla/csrf v1.6.2
+	github.com/gorilla/csrf v1.7.2
 	github.com/gorilla/handlers v1.5.2
 	github.com/gorilla/mux v1.8.1
 	github.com/gorilla/securecookie v1.1.2
@@ -21,9 +21,9 @@ require (
 	github.com/jinzhu/gorm v1.9.2
 	github.com/jordan-wright/email v4.0.1-0.20200824153738-3f5bafa1cd84+incompatible
 	github.com/jordan-wright/unindexed v0.0.0-20181209214434-78fa79113c0f
-	github.com/mattn/go-sqlite3 v1.14.16
+	github.com/mattn/go-sqlite3 v1.14.24
 	github.com/oschwald/maxminddb-golang v1.6.0
-	github.com/sirupsen/logrus v1.4.2
+	github.com/sirupsen/logrus v1.9.3
 	golang.org/x/crypto v0.28.0
 	golang.org/x/time v0.0.0-20200416051211-89c76fbcd5d1
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
@@ -36,17 +36,14 @@ require (
 	github.com/alecthomas/units v0.0.0-20190924025748-f65c72e2690d // indirect
 	github.com/andybalholm/cascadia v1.0.0 // indirect
 	github.com/denisenkom/go-mssqldb v0.0.0-20191124224453-732737034ffd // indirect
-	github.com/emersion/go-sasl v0.0.0-20191210011802-430746ea8b9b // indirect
-	github.com/emersion/go-textwrapper v0.0.0-20160606182133-d0e65e56babe // indirect
+	github.com/emersion/go-sasl v0.0.0-20200509203442-7bfe0ed36a21 // indirect
 	github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5 // indirect
 	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/gofrs/uuid v4.4.0+incompatible // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.0.1 // indirect
-	github.com/konsorten/go-windows-terminal-sequences v1.0.1 // indirect
 	github.com/kylelemons/go-gypsy v0.0.0-20160905020020-08cad365cd28 // indirect
 	github.com/lib/pq v1.1.1 // indirect
-	github.com/pkg/errors v0.8.0 // indirect
 	github.com/ziutek/mymysql v1.5.4 // indirect
 	golang.org/x/net v0.21.0 // indirect
 	golang.org/x/sys v0.26.0 // indirect
