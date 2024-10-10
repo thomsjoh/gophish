@@ -186,7 +186,7 @@ func Setup(c *config.Config) error {
 	}
 	db.LogMode(false)
 	db.SetLogger(log.Logger)
-	db.DB().SetMaxOpenConns(1)
+	db.DB().SetMaxOpenConns(0)
 	if err != nil {
 		log.Error(err)
 		return err
